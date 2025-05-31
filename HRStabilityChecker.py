@@ -11,12 +11,22 @@ num_residents = int(in_lines[1])
 hospitals = {}
 offset = 2
 i = 0
-j = 0
+
 while i < num_hospitals:
     # parts is a list of the line split by spaces
     parts = in_lines[i + offset].split()
     hospitals[parts[0]] = parts[2:]
     i += 1
 
-print(hospitals)
+
+residents = {}
+offset = offset + num_hospitals
+j = 0
+
+while j < num_residents:
+    parts = in_lines[j + offset].split()
+    residents[parts[0]] = parts[1:]
+    j += 1
+
+
 
