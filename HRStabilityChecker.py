@@ -38,13 +38,25 @@ while j < num_residents:
     residents[parts[0]] = parts[1:]
     j += 1
 
+# assignments = dict.fromkeys(hospitals, [])
+
+assignments = {}
+
 for resident in residents:
     resident_list = residents[resident]
     for hospital in resident_list:
         hospital_list = hospitals[hospital]
         if hospital in resident_list and resident in hospital_list:
             print(hospital + ' is in', resident + ' list and', resident + ' is in', hospital, 'list')
+            # assignments[hospital].append(resident)
+            if assignments.get(hospital) is None:
+                assignments[hospital] = [resident]
+                print(assignments.get(hospital))
+            else:
+                assignments[hospital].append(resident)
 
+
+print(assignments)
 
 in_file.close()
 out_file.close()
