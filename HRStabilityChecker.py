@@ -40,20 +40,31 @@ while j < num_residents:
 
 # assignments = dict.fromkeys(hospitals, [])
 
-assignments = {}
+assignments = dict.fromkeys(hospitals, [])
 
 for resident in residents:
-    resident_list = residents[resident]
-    for hospital in resident_list:
-        hospital_list = hospitals[hospital]
-        if hospital in resident_list and resident in hospital_list:
-            print(hospital + ' is in', resident + ' list and', resident + ' is in', hospital, 'list')
-            # assignments[hospital].append(resident)
-            if assignments.get(hospital) is None:
-                assignments[hospital] = [resident]
-                print(assignments.get(hospital))
-            else:
-                assignments[hospital].append(resident)
+    print(resident)
+    print(residents[resident][0])
+    for hospital in hospitals:
+        print(hospital)
+        print(hospitals[hospital][0])
+
+# I want to iterate through each residents preference list
+# Assign the resident to their first choice (if possible, if not continue down their preference list)
+# Before assignment, check if hospital list is full, if not check preference to determine if they get added
+
+# for resident in residents:
+#     resident_list = residents[resident]
+#     for hospital in resident_list:
+#         hospital_list = hospitals[hospital]
+#         if hospital in resident_list and resident in hospital_list:
+#             print(hospital + ' is in', resident + ' list and', resident + ' is in', hospital, 'list')
+#             # assignments[hospital].append(resident)
+#             if assignments.get(hospital) is None:
+#                 assignments[hospital] = [resident]
+#                 print(assignments.get(hospital))
+#             else:
+#                 assignments[hospital].append(resident)
 
 
 print(assignments)
