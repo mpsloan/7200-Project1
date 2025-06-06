@@ -1,5 +1,6 @@
 # Should probably functionalize reading input files
 
+# def is_unstable(resident, hospital, matches)
 
 # input and output files opened
 in_file = open('input/HRInput.txt', 'r')
@@ -49,10 +50,17 @@ assignments = {}
 # read in matches
 for lines in match_lines:
     parts = lines.split()
-    assignments[parts[0]] = parts[1:]
+    assignments[parts[0]] = parts[2:]
+
+# cycle through assignments
+# check if resident prefers other hospital to current
+# if yes unstable matching, break and write NO to file
+# if no
+# for assignment in assignments:
 
 
 print(assignments)
+print(residents.get('DARRIUS')[0])
 
 in_file.close()
 out_file.close()
