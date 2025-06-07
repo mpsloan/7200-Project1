@@ -3,7 +3,7 @@
 # def is_unstable(resident, hospital, matches)
 
 def get_resident_list(resident_name):
-    return residents_pref[resident]
+    return residents_pref[resident_name]
 
 
 def get_hospital_list(hospital_name):
@@ -62,10 +62,14 @@ for lines in match_lines:
 
 
 for assigned_hospital in assignments:
-    print(assigned_hospital)
     matched_residents = assignments[assigned_hospital]
     for matched_resident in matched_residents:
-        print(matched_resident)
+        # print(matched_resident)
+        matched_residents_pref = get_resident_list(matched_resident)
+        for hospital in matched_residents_pref:
+            hospitals_rank = matched_residents_pref.index(hospital)
+            assigned_hospital_rank = assigned_hospital.index(assigned_hospital)
+            print(matched_resident, "ranks their assigned hospital ", assigned_hospital, " at ", assigned_hospital_rank, " and the current hospital ", hospital, " has rank ", hospitals_rank)
 
 
 in_file.close()
