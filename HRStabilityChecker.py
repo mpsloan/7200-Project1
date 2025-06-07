@@ -51,7 +51,7 @@ while j < num_residents:
     residents_pref[parts[0]] = parts[1:]
     j += 1
 
-match_file = open('input/HRMatch.txt', 'r')
+match_file = open('input/HRMatch2.txt', 'r')
 match_lines = match_file.readlines()
 assignments = {}
 
@@ -68,8 +68,9 @@ for assigned_hospital in assignments:
         matched_residents_pref = get_resident_list(matched_resident)
         for current_hospital in matched_residents_pref:
             current_hospital_rank = matched_residents_pref.index(current_hospital)
-            assigned_hospital_rank = assigned_hospital.index(assigned_hospital)
-            print(matched_resident, "ranks their assigned hospital ", assigned_hospital, " at ", assigned_hospital_rank, " and the current hospital ", current_hospital, " has rank ", current_hospital_rank)
+            assigned_hospital_rank = matched_residents_pref.index(assigned_hospital)
+            print(matched_resident, "ranks their assigned hospital ", assigned_hospital, " at ", assigned_hospital_rank,
+                  " and the current hospital ", current_hospital, " has rank ", current_hospital_rank)
             # they prefer another hospital over current one
             if current_hospital_rank < assigned_hospital_rank:
                 current_hospital_pref = get_hospital_list(current_hospital)
