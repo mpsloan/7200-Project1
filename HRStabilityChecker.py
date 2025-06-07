@@ -9,6 +9,9 @@ def get_resident_list(resident_name):
 def get_hospital_list(hospital_name):
     return hospitals_pref[hospital_name]
 
+def get_hospital_assignments(hospital_name):
+    return assignments[hospital_name]
+
 
 # input and output files opened
 in_file = open('input/HRInput.txt', 'r')
@@ -74,12 +77,27 @@ for assigned_hospital in assignments:
             # they prefer another hospital over current one
             if current_hospital_rank < assigned_hospital_rank:
                 current_hospital_pref = get_hospital_list(current_hospital)
-                print(current_hospital_pref)
+                current_hospital_assignees = get_hospital_assignments(current_hospital)
+                for current_resident in current_hospital_pref:
+                    for assigned_resident in current_hospital_assignees:
+                        current_resident_rank = current_hospital_pref.index(current_resident)
+                        if assigned_resident not in current_hospital_pref:
+                            assigned_resident_rank = float('inf')
+                        else:
+                            assigned_resident_rank = current_hospital_pref.index(assigned_resident)
+                        if current_resident_rank < assigned_resident_rank:
+                            unstable = True
+                            break
+                # print(current_hospital_pref)
 
+# for assigned_resident in current_hospital:
+# wanna cycle through latha, joseph
 
-# if assigned hospital rank < current hospital rank everything gucci
-
-# if current hospital rank < assigned hospital rank
+if unstable:
+    out_file.write("NO")
+    print("Unstable")
+else:
+    out_file.write("YES")
 
 in_file.close()
 out_file.close()
