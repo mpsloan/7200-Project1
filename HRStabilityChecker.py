@@ -60,17 +60,25 @@ for lines in match_lines:
     parts = lines.split()
     assignments[parts[0]] = parts[2:]
 
+unstable = False
 
 for assigned_hospital in assignments:
     matched_residents = assignments[assigned_hospital]
     for matched_resident in matched_residents:
-        # print(matched_resident)
         matched_residents_pref = get_resident_list(matched_resident)
-        for hospital in matched_residents_pref:
-            hospitals_rank = matched_residents_pref.index(hospital)
+        for current_hospital in matched_residents_pref:
+            current_hospital_rank = matched_residents_pref.index(current_hospital)
             assigned_hospital_rank = assigned_hospital.index(assigned_hospital)
-            print(matched_resident, "ranks their assigned hospital ", assigned_hospital, " at ", assigned_hospital_rank, " and the current hospital ", hospital, " has rank ", hospitals_rank)
+            print(matched_resident, "ranks their assigned hospital ", assigned_hospital, " at ", assigned_hospital_rank, " and the current hospital ", current_hospital, " has rank ", current_hospital_rank)
+            # they prefer another hospital over current one
+            if current_hospital_rank < assigned_hospital_rank:
+                current_hospital_pref = get_hospital_list(current_hospital)
+                print(current_hospital_pref)
 
+
+# if assigned hospital rank < current hospital rank everything gucci
+
+# if current hospital rank < assigned hospital rank
 
 in_file.close()
 out_file.close()
