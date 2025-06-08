@@ -9,6 +9,7 @@ def get_resident_list(resident_name):
 def get_hospital_list(hospital_name):
     return hospitals_pref[hospital_name]
 
+
 def get_hospital_assignments(hospital_name):
     return assignments[hospital_name]
 
@@ -54,7 +55,7 @@ while j < num_residents:
     residents_pref[parts[0]] = parts[1:]
     j += 1
 
-match_file = open('input/HRMatch2.txt', 'r')
+match_file = open('input/HRMatch.txt', 'r')
 match_lines = match_file.readlines()
 assignments = {}
 
@@ -81,23 +82,24 @@ for assigned_hospital in assignments:
                 for current_resident in current_hospital_pref:
                     for assigned_resident in current_hospital_assignees:
                         current_resident_rank = current_hospital_pref.index(current_resident)
-                        if assigned_resident not in current_hospital_pref:
-                            assigned_resident_rank = float('inf')
-                        else:
-                            assigned_resident_rank = current_hospital_pref.index(assigned_resident)
-                        if current_resident_rank < assigned_resident_rank:
+                        if matched_resident not in current_hospital_pref:
                             unstable = True
                             break
-                # print(current_hospital_pref)
+                        else:
+                            current_resident_rank = current_hospital_pref.index(matched_resident)
+
+# NEED TO RENAME VARIABLES, LOGIC IS NOT CLEAR AT ALL
+
 
 # for assigned_resident in current_hospital:
-# wanna cycle through latha, joseph
+# want to cycle through latha, joseph
 
 if unstable:
     out_file.write("NO")
     print("Unstable")
 else:
     out_file.write("YES")
+    print("Stable")
 
 in_file.close()
 out_file.close()
