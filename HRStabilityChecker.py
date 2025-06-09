@@ -25,7 +25,7 @@ def get_hospital_assignments(hospital_name):
 
 # input and output files opened
 in_file = open('input/HRInput.txt', 'r')
-out_file = open('output/HROutput.txt', 'w')
+out_file = open('output/HRStable.txt', 'w')
 
 in_lines = in_file.readlines()
 
