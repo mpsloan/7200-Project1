@@ -24,8 +24,8 @@ def get_hospital_assignments(hospital_name):
 
 
 # input and output files opened
-in_file = open('input/HRInput.txt', 'r')
-out_file = open('output/HRStable.txt', 'w')
+in_file = open('HRInput.txt', 'r')
+out_file = open('HRStable.txt', 'w')
 
 in_lines = in_file.readlines()
 
@@ -67,7 +67,7 @@ while j < num_residents:
     j += 1
 
 # open and read the match file
-match_file = open('input/HRMatch2.txt', 'r')
+match_file = open('HRMatch.txt', 'r')
 match_lines = match_file.readlines()
 assignments = {}
 
@@ -108,10 +108,8 @@ for assigned_hospital in assignments:
 
 if unstable:
     out_file.write("NO")
-    print("Unstable")
 else:
     out_file.write("YES")
-    print("Stable")
 
 in_file.close()
 out_file.close()
